@@ -6,9 +6,6 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/Shadcn/navigation-menu"
-import type { ReactElement } from "react"
-import Home from "@/pages/Home"
-import Dashboard from "@/pages/Dashboard"
 import { ROUTES } from "./routes"
 
 export function NavigationBar() {
