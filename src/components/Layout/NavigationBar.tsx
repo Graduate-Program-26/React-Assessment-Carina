@@ -1,38 +1,29 @@
-import { NavLink } from "react-router"
+import { NavLink } from "react-router-dom"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-
-const components: { id: number; title: string; href: string }[] = [
-  {
-    id: 1,
-    title: "Home",
-    href: "/",
-  },
-  {
-    id: 2,
-    title: "Dashboard",
-    href: "/dashboard",
-  },
-]
+} from "@/components/Shadcn/navigation-menu"
+import type { ReactElement } from "react"
+import Home from "@/pages/Home"
+import Dashboard from "@/pages/Dashboard"
+import { ROUTES } from "./routes"
 
 export function NavigationBar() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          {components.map((component) => {
+          {ROUTES.map((route) => {
             return (
               <NavigationMenuLink
                 asChild
                 className={navigationMenuTriggerStyle()}
-                key={component.id}
+                key={route.id}
               >
-                <NavLink to={component.href}>{component.title}</NavLink>
+                <NavLink to={route.href}>{route.title}</NavLink>
               </NavigationMenuLink>
             )
           })}
