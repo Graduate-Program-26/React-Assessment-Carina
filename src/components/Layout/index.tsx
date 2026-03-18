@@ -8,9 +8,9 @@ const Layout = () => {
           <NavigationBar />
         </div>
       </header>
-      <div className="container mx-auto">
+      <main className="container mx-auto">
         <Outlet />
-      </div>
+      </main>
     </>
   )
 }
