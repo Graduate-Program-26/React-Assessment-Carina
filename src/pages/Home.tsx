@@ -1,7 +1,13 @@
-export interface HomePageProps {}
+import { NavigationBar } from "@/components/NavigationBar"
 
-export default function HomePage(props: HomePage) {
-  return <div></div>
+export interface HomeProps {}
+
+export default function Home(props: HomeProps) {
+  return (
+    <div>
+      <NavigationBar />
+    </div>
+  )
 }
 
 // Page to be used as search all github users and preview
