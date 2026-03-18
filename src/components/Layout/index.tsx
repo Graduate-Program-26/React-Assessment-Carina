@@ -3,12 +3,14 @@ import { NavigationBar } from "./NavigationBar"
 const Layout = () => {
   return (
     <>
-      <header>
-        <NavigationBar />
+      <header className="w-full bg-primary">
+        <div className="container mx-auto">
+          <NavigationBar />
+        </div>
       </header>
-      <main>
+      <div className="container mx-auto">
         <Outlet />
-      </main>
+      </div>
     </>
   )
 }

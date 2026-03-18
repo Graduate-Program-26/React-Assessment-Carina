@@ -13,21 +13,23 @@ import { ROUTES } from "./routes"
 
 export function NavigationBar() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          {ROUTES.map((route) => {
-            return (
+    <NavigationMenu className="h-16">
+      <NavigationMenuList className="gap-4">
+        {ROUTES.map((route) => {
+          return (
+            <NavigationMenuItem>
               <NavigationMenuLink
                 asChild
                 className={navigationMenuTriggerStyle()}
                 key={route.id}
               >
-                <NavLink to={route.href}>{route.title}</NavLink>
+                <NavLink to={route.href} className="bg-primary">
+                  {route.title}
+                </NavLink>
               </NavigationMenuLink>
-            )
-          })}
-        </NavigationMenuItem>
+            </NavigationMenuItem>
+          )
+        })}
       </NavigationMenuList>
     </NavigationMenu>
   )
