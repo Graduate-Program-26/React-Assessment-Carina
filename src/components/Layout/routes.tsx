@@ -1,5 +1,6 @@
 import Dashboard from "@/pages/Dashboard"
 import Home from "@/pages/Home"
+import Login from "@/pages/Login"
 import type { ReactElement } from "react"
 
 export const ROUTES: {
@@ -21,6 +22,13 @@ export const ROUTES: {
     title: "Dashboard",
     href: "/dashboard",
     component: <Dashboard />,
+    isIndex: false,
+  },
+  {
+    id: 3,
+    title: "Login",
+    href: "/login",
+    component: <Login />,
     isIndex: false,
   },
 ]
