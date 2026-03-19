@@ -1,5 +1,6 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 import { NavigationBar } from "./NavigationBar"
+import { useAuth } from "@clerk/clerk-react"
 const Layout = () => {
   return (
     <div className="">
