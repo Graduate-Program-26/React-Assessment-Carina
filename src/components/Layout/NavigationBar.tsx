@@ -7,8 +7,20 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/Shadcn/navigation-menu"
 import { ROUTES } from "./routes"
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+  useUser,
+  UserButton,
+} from "@clerk/clerk-react"
 
-export function NavigationBar() {
+type NavigationBarProps = {
+  displayName?: string
+}
+
+export function NavigationBar({ displayName }: NavigationBarProps) {
   return (
     <NavigationMenu className="h-16">
       <NavigationMenuList className="gap-4">
@@ -28,6 +40,12 @@ export function NavigationBar() {
           )
         })}
       </NavigationMenuList>
+      <SignedIn>
+        {displayName && <span className="text-sm">Hello {displayName}</span>}
+        <SignOutButton redirectUrl="/login">
+          <button className="text-sm underline">Log out</button>
+        </SignOutButton>
+      </SignedIn>
     </NavigationMenu>
   )
 }

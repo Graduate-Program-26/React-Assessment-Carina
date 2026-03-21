@@ -14,6 +14,7 @@ function ProtectedLayout() {
       <RedirectToSignIn redirectUrl={location.pathname + location.search} />
     )
   }
+
   //   TODO: Add protected layout wrapper component or change navbar
   return (
     <div>

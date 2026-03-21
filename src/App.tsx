@@ -13,11 +13,10 @@ function App() {
       <Route element={<Layout />}>
         {/* TODO: Make use of ROUTES constant */}
         <Route index element={<Home />} />
+        <Route path="login/*" element={<Login />} />
         <Route element={<ProtectedLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
-
-        <Route path="login" element={<Login />} />
       </Route>
     </Routes>
   )
