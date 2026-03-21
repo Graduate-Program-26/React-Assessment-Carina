@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@/components/Shadcn/navigation-menu"
-import { ROUTES } from "./routes"
+} from "@/components/Shadcn/navigation-menu";
+import { ROUTES } from "./routes";
 import {
   SignedIn,
   SignedOut,
@@ -15,25 +15,25 @@ import {
   UserButton,
   useAuth,
   useClerk,
-} from "@clerk/clerk-react"
+} from "@clerk/clerk-react";
 
 export function NavigationBar() {
-  const { isSignedIn } = useAuth()
-  const { user } = useUser()
-  const { signOut } = useClerk()
+  const { isSignedIn } = useAuth();
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
   const displayName =
     user?.firstName ||
     user?.username ||
     user?.primaryEmailAddress?.emailAddress ||
-    ""
+    "";
 
   const visibleRoutes = ROUTES.filter((route) => {
-    if (route.isProtected && !isSignedIn) return false
+    if (route.isProtected && !isSignedIn) return false;
     if (!route.isProtected && isSignedIn && route.href === "/login")
-      return false
-    return true
-  })
+      return false;
+    return true;
+  });
   return (
     <div className="flex h-16 items-center justify-between">
       <NavigationMenu>
@@ -59,19 +59,13 @@ export function NavigationBar() {
           <button
             className="text-sm underline"
             onClick={async () => {
-              await signOut({ redirectUrl: "/login" })
+              await signOut({ redirectUrl: "/login" });
             }}
           >
             Log out
           </button>
         </SignedIn>
-
-        <SignedOut>
-          <SignInButton>
-            <button className="text-sm underline">Sign in</button>
-          </SignInButton>
-        </SignedOut>
       </div>
     </div>
-  )
+  );
 }
