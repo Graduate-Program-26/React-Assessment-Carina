@@ -1,3 +1,10 @@
 # Personal Github Dashboard
 
 ## Notes
+
+- When running git commit husky will first run linter to check for type any
+
+## TODOs
+
+- Add fallback pages when auth fails
+- (Non-priority) Convert Clerk components to custom components
