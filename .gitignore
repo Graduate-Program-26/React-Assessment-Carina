@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# .eslintignore
+src/components/Shadcn/**

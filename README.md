@@ -2,6 +2,8 @@
 
 ## Notes
 
+- When running git commit husky will first run linter to check for type any
+
 ## TODOs
 
 - Add fallback pages when auth fails
