@@ -11,41 +11,67 @@ import {
   SignedIn,
   SignedOut,
   SignInButton,
-  SignOutButton,
   useUser,
   UserButton,
+  useAuth,
+  useClerk,
 } from "@clerk/clerk-react"
 
-type NavigationBarProps = {
-  displayName?: string
-}
+export function NavigationBar() {
+  const { isSignedIn } = useAuth()
+  const { user } = useUser()
+  const { signOut } = useClerk()
 
-export function NavigationBar({ displayName }: NavigationBarProps) {
+  const displayName =
+    user?.firstName ||
+    user?.username ||
+    user?.primaryEmailAddress?.emailAddress ||
+    ""
+
+  const visibleRoutes = ROUTES.filter((route) => {
+    if (route.isProtected && !isSignedIn) return false
+    if (!route.isProtected && isSignedIn && route.href === "/login")
+      return false
+    return true
+  })
   return (
-    <NavigationMenu className="h-16">
-      <NavigationMenuList className="gap-4">
-        {ROUTES.map((route) => {
-          return (
-            <NavigationMenuItem>
+    <div className="flex h-16 items-center justify-between">
+      <NavigationMenu>
+        <NavigationMenuList className="gap-4">
+          {visibleRoutes.map((route) => (
+            <NavigationMenuItem key={route.id}>
               <NavigationMenuLink
                 asChild
                 className={navigationMenuTriggerStyle()}
-                key={route.id}
               >
-                <NavLink to={route.href} className="bg-primary">
-                  {route.title}
-                </NavLink>
+                <NavLink to={route.href}>{route.title}</NavLink>
               </NavigationMenuLink>
             </NavigationMenuItem>
-          )
-        })}
-      </NavigationMenuList>
-      <SignedIn>
-        {displayName && <span className="text-sm">Hello {displayName}</span>}
-        <SignOutButton redirectUrl="/login">
-          <button className="text-sm underline">Log out</button>
-        </SignOutButton>
-      </SignedIn>
-    </NavigationMenu>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+
+      <div className="flex items-center gap-3">
+        <SignedIn>
+          {displayName && <span className="text-sm">Hello {displayName}</span>}
+          {/* Clerk component */}
+          <UserButton />
+          <button
+            className="text-sm underline"
+            onClick={async () => {
+              await signOut({ redirectUrl: "/login" })
+            }}
+          >
+            Log out
+          </button>
+        </SignedIn>
+
+        <SignedOut>
+          <SignInButton>
+            <button className="text-sm underline">Sign in</button>
+          </SignInButton>
+        </SignedOut>
+      </div>
+    </div>
   )
 }

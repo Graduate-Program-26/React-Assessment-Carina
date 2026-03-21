@@ -9,6 +9,7 @@ export const ROUTES: {
   href: string
   component: ReactElement
   isIndex: boolean
+  isProtected: boolean
 }[] = [
   {
     id: 1,
@@ -16,6 +17,7 @@ export const ROUTES: {
     href: "/",
     component: <Home />,
     isIndex: true,
+    isProtected: false,
   },
   {
     id: 2,
@@ -23,6 +25,7 @@ export const ROUTES: {
     href: "/dashboard",
     component: <Dashboard />,
     isIndex: false,
+    isProtected: true,
   },
   {
     id: 3,
@@ -30,5 +33,6 @@ export const ROUTES: {
     href: "/login",
     component: <Login />,
     isIndex: false,
+    isProtected: false,
   },
 ]

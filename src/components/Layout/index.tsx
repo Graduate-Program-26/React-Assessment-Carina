@@ -1,21 +1,31 @@
-import { Outlet } from "react-router-dom"
-import { NavigationBar } from "./NavigationBar"
-import { useUser } from "@clerk/clerk-react"
-const Layout = () => {
-  const { user } = useUser()
-  const displayName = user?.firstName || user?.username || ""
+import { Outlet } from "react-router-dom";
+import { NavigationBar } from "./NavigationBar";
+import { RedirectToSignIn, useAuth } from "@clerk/clerk-react";
+import { Spinner } from "../Shadcn/spinner";
+
+type LayoutProps = { requiresAuth?: boolean };
+
+const Layout = ({ requiresAuth }: LayoutProps) => {
+  const { isLoaded, isSignedIn } = useAuth();
+
+  if (requiresAuth) {
+    if (!isLoaded) return <Spinner />;
+    if (!isSignedIn) {
+      return <RedirectToSignIn redirectUrl="/dashboard" />;
+    }
+  }
   return (
-    <div className="">
+    <>
       <header className="w-full bg-primary">
         <div className="container mx-auto">
-          <NavigationBar displayName={displayName} />
+          <NavigationBar />
         </div>
       </header>
       <main className="container mx-auto py-16">
         <Outlet />
       </main>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Layout
+export default Layout;
