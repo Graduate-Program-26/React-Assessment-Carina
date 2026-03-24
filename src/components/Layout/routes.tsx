@@ -1,15 +1,16 @@
-import Dashboard from "@/pages/Dashboard"
-import Home from "@/pages/Home"
-import Login from "@/pages/Login"
-import type { ReactElement } from "react"
+import Dashboard from "@/pages/Dashboard";
+import Home from "@/pages/Home";
+import Login from "@/pages/Login";
+import { UserSearch } from "lucide-react";
+import type { ReactElement } from "react";
 
 export const ROUTES: {
-  id: number
-  title: string
-  href: string
-  component: ReactElement
-  isIndex: boolean
-  isProtected: boolean
+  id: number;
+  title: string;
+  href: string;
+  component: ReactElement;
+  isIndex: boolean;
+  isProtected: boolean;
 }[] = [
   {
     id: 1,
@@ -35,4 +36,12 @@ export const ROUTES: {
     isIndex: false,
     isProtected: false,
   },
-]
+  {
+    id: 4,
+    title: "Search User",
+    href: "/user-searcg",
+    component: <UserSearch />,
+    isIndex: false,
+    isProtected: true,
+  },
+];
