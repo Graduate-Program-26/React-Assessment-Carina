@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
+import UserSearch from "./pages/UserSearch";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       {/* Logged in,protected, guarded by layout "requiresAuth" */}
       <Route element={<Layout requiresAuth />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="user-search" element={<UserSearch />} />
       </Route>
     </Routes>
   );

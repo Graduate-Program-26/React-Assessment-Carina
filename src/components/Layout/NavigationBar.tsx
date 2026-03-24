@@ -9,8 +9,6 @@ import {
 import { ROUTES } from "./routes";
 import {
   SignedIn,
-  SignedOut,
-  SignInButton,
   useUser,
   UserButton,
   useAuth,
