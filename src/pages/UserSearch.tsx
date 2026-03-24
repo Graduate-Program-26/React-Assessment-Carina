@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getUserByUsername } from "@/api/users";
-import SearchInput from "@/components/Layout/SearchInput";
+import SearchInput from "@/components/SearchInput";
 import { UserProfileCard } from "@/components/UserProfileCard";
 
 function UserSearch() {
@@ -14,7 +14,6 @@ function UserSearch() {
     enabled: !!submitUsername,
   });
   return (
-    // TODO: Also submit on enter press
     <div className="flex flex-col items-center justify-center gap-8">
       <SearchInput
         value={usernameInput}

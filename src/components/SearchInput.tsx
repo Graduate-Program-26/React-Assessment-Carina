@@ -21,6 +21,12 @@ function SearchInput({ value, onClick, onChange }: SearchInputProps) {
           placeholder="Type to search..."
           value={value}
           onChange={onChange}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              onClick();
+            }
+          }}
         />
         <Button onClick={onClick}>Search</Button>
       </ButtonGroup>
