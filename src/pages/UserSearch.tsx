@@ -3,12 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { getUserByUsername } from "@/api/users";
 import SearchInput from "@/components/SearchInput";
 import { UserProfileCard } from "@/components/UserProfileCard";
+import { Spinner } from "@/components/Shadcn/spinner";
 
 function UserSearch() {
   const [usernameInput, setUsernameInput] = useState("");
   const [submitUsername, setSubmitUsername] = useState<string | null>(null);
 
-  const { data, isPending, error } = useQuery({
+  const { data, error, isFetching } = useQuery({
     queryKey: ["user", submitUsername],
     queryFn: () => getUserByUsername(submitUsername as string),
     enabled: !!submitUsername,
@@ -23,7 +24,7 @@ function UserSearch() {
           if (trimmedUsername) setSubmitUsername(trimmedUsername);
         }}
       />
-      {isPending && <p>Loading…</p>}
+      {submitUsername && isFetching && <Spinner />}
       {error && <p>{(error as Error).message}</p>}
       {submitUsername && data === null && <p>No user found.</p>}
       {data && (

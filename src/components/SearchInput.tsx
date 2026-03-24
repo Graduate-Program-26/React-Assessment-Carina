@@ -15,7 +15,6 @@ function SearchInput({ value, onClick, onChange }: SearchInputProps) {
     <Field className="md:max-w-[80%]">
       <FieldLabel htmlFor="username">Search by username</FieldLabel>
       <ButtonGroup>
-        {/* TODO: UI error handling */}
         <Input
           id="username"
           placeholder="Type to search..."

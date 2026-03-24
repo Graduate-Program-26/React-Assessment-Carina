@@ -23,8 +23,6 @@ interface UserProfileProps {
   profileUrl?: string;
 }
 
-// TODO: Convert followers and following above 1000 to show 1k
-
 const UserProfileCard = ({
   name,
   avatar,

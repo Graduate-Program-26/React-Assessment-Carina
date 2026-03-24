@@ -39,7 +39,7 @@ export const ROUTES: {
   {
     id: 4,
     title: "Search User",
-    href: "/user-searcg",
+    href: "/user-search",
     component: <UserSearch />,
     isIndex: false,
     isProtected: true,
