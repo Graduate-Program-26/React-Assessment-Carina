@@ -12,7 +12,7 @@ interface SearchInputProps {
 
 function SearchInput({ value, onClick, onChange }: SearchInputProps) {
   return (
-    <Field>
+    <Field className="md:max-w-[80%]">
       <FieldLabel htmlFor="username">Search by username</FieldLabel>
       <ButtonGroup>
         {/* TODO: UI error handling */}

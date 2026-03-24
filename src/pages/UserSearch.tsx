@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getUserByUsername } from "@/api/users";
-import SearchInput from "@/components/SearchInput";
+import SearchInput from "@/components/Layout/SearchInput";
+import { UserProfileCard } from "@/components/UserProfileCard";
 
 function UserSearch() {
   const [usernameInput, setUsernameInput] = useState("");
@@ -12,9 +13,9 @@ function UserSearch() {
     queryFn: () => getUserByUsername(submitUsername as string),
     enabled: !!submitUsername,
   });
-  console.log(data);
   return (
-    <div>
+    // TODO: Also submit on enter press
+    <div className="flex flex-col items-center justify-center gap-8">
       <SearchInput
         value={usernameInput}
         onChange={(e) => setUsernameInput(e.currentTarget.value)}
@@ -26,6 +27,17 @@ function UserSearch() {
       {isPending && <p>Loading…</p>}
       {error && <p>{(error as Error).message}</p>}
       {submitUsername && data === null && <p>No user found.</p>}
+      {data && (
+        <UserProfileCard
+          name={data.name ? data.name : data.login}
+          bio={data.bio}
+          avatar={data.avatar_url}
+          followers={data.followers}
+          following={data.following}
+          publicRepos={data.public_repos}
+          profileUrl={data.html_url}
+        />
+      )}
     </div>
   );
 }
