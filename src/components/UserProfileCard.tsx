@@ -1,4 +1,4 @@
-// Card component curtesy of https://www.shadcnblocks.com/block/user-profile1
+// Base Card component curtesy of https://www.shadcnblocks.com/block/user-profile1
 import {
   Avatar,
   AvatarFallback,

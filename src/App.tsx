@@ -12,12 +12,12 @@ function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="login/*" element={<Login />} />
-        <Route path="user-search" element={<UserSearch />} />
       </Route>
 
       {/* Logged in,protected, guarded by layout "requiresAuth" */}
       <Route element={<Layout requiresAuth />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="user-search" element={<UserSearch />} />
       </Route>
     </Routes>
   );
