@@ -13,7 +13,7 @@ import {
 } from "@/components/Shadcn/card";
 import { Separator } from "./Shadcn/separator";
 
-interface UserProfileProps {
+interface UserPreviewProps {
   name: string;
   avatar?: string;
   bio?: string | null;
@@ -23,7 +23,7 @@ interface UserProfileProps {
   profileUrl?: string;
 }
 
-const UserProfileCard = ({
+const UserPreviewCard = ({
   name,
   avatar,
   bio,
@@ -31,7 +31,7 @@ const UserProfileCard = ({
   following,
   publicRepos,
   profileUrl,
-}: UserProfileProps) => {
+}: UserPreviewProps) => {
   return (
     <Card className="flex w-full max-w-sm justify-center rounded-2xl border-2 bg-card p-8 text-center">
       <CardHeader className="pb-0">
@@ -90,4 +90,4 @@ const UserProfileCard = ({
   );
 };
 
-export { UserProfileCard };
+export { UserPreviewCard };
