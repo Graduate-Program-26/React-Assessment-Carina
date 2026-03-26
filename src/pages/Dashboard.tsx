@@ -37,7 +37,7 @@ export default function Dashboard() {
   const eventArray = events
     ?.map(({ id, type, repo }) => ({
       id,
-      type,
+      type: type ?? "Unknown",
       repo: repo?.name ?? null,
     }))
     .slice(0, 10);
@@ -63,7 +63,7 @@ export default function Dashboard() {
             <Avatar className="size-24">
               <AvatarImage
                 src={user?.avatar_url}
-                alt={user?.name}
+                alt={user?.name ?? undefined}
                 className="object-cover"
               />
               <AvatarFallback className="text-2xl font-semibold">
