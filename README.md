@@ -1,21 +1,29 @@
-# React + TypeScript + Vite + shadcn/ui
+# Personal Github Dashboard
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+[Vercel Preview](https://react-assessment-carina.vercel.app/)
 
-## Adding components
+## Notes
 
-To add components to your app, run the following command:
+- When running git commit husky will first run linter to check for type any
 
-```bash
-npx shadcn@latest add button
-```
+## Resources used
 
-This will place the ui components in the `src/components` directory.
+- [Shadcn theme](https://tweakcn.com/editor/theme)
+- [Shadcn additional components](https://www.shadcnblocks.com)
+- [Tanstack](https://tanstack.com/query/latest/docs/framework/react/guides)
+- [Tailwind](https://tailwindcss.com/docs)
+- [Clerk Provider](https://clerk.com/docs/react/getting-started/quickstart)
+- [Vercel](https://vercel.com/docs/deployments)
+- [React Router](https://reactrouter.com/start/declarative/installation)
+- [Husky](https://typicode.github.io/husky/)
 
-## Using components
+## Frameworks/Libraries used
 
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button"
-```
+- Vite - setup
+- React
+- Shadcn
+- Tailwind
+- Husky pre-commit hooks
+- Clerk Auth Provider
+- Tanstack Query
+- Octokit
