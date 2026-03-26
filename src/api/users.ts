@@ -14,12 +14,12 @@ export const getUserByUsername = async (username: string) => {
   }
 };
 
-export const getAuthenticatedUser = async (auth) => {
+export const getAuthenticatedUser = async (token) => {
   const octokit = new Octokit();
 
   await octokit.request("GET /user", {
     headers: {
-      Authorization: auth,
+      Authorization: token,
     },
   });
 };

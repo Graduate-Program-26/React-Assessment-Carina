@@ -3,20 +3,22 @@ import { RepoCard } from "@/components/Dashboard/RepoCard";
 import { Avatar } from "@/components/Shadcn/avatar";
 import { Separator } from "@/components/Shadcn/separator";
 import { Spinner } from "@/components/Shadcn/spinner";
-import { useUser } from "@clerk/clerk-react";
+import { useAuth, useUser } from "@clerk/clerk-react";
 import { GitHubCalendar } from "react-github-calendar";
 
 export default function Dashboard() {
   const { isLoaded, isSignedIn, user } = useUser();
-  // const { getToken } = useAuth();
+  const { getToken } = useAuth();
 
-  // const fetchDataFromGithub = async () => {
-  //   const token = await getToken();
-  //   getAuthenticatedUser(token);
-  //   console.log(token);
-  //   return token;
-  // };
-  // fetchDataFromGithub();
+  console.log(user);
+
+  const fetchDataFromGithub = async () => {
+    const token = await getToken();
+    // getAuthenticatedUser(token);
+    console.log(token);
+    return token;
+  };
+  fetchDataFromGithub();
 
   if (!isLoaded) return <Spinner />;
   if (!isSignedIn || !user?.username) return null;
