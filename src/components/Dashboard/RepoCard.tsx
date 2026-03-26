@@ -30,7 +30,7 @@ export function RepoCard({
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription className="line-clamp-2">
-          {description ?? "No description"}
+          {description ?? "No description available"}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-between">
@@ -38,7 +38,5 @@ export function RepoCard({
         <p>Last updated: {formatDate(lastUpdated)}</p>
       </CardContent>
     </Card>
-  );
-}
   );
 }
