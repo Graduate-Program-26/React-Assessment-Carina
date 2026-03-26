@@ -14,15 +14,15 @@ import { GitHubCalendar } from "react-github-calendar";
 export default function Dashboard() {
   const { data: userData, isLoading: isLoadingUser } = useQuery({
     queryKey: ["user"],
-    queryFn: getAuthenticatedUser,
+    queryFn: () => getAuthenticatedUser,
   });
 
   const { data: repoData, isLoading: isLoadingRepos } = useQuery({
     queryKey: ["repos"],
-    queryFn: getUserRepos,
+    queryFn: () => getUserRepos,
   });
 
-  const username = data?.data?.login;
+  const username = userData?.data?.login;
 
   const { data: eventData, isLoading: isLoadingEvents } = useQuery({
     queryKey: ["events", username],
