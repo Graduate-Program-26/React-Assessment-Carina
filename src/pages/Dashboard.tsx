@@ -12,7 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GitHubCalendar } from "react-github-calendar";
 
 export default function Dashboard() {
-  const { data, isLoading: isLoadingUser } = useQuery({
+  const { data: userData, isLoading: isLoadingUser } = useQuery({
     queryKey: ["user"],
     queryFn: getAuthenticatedUser,
   });
@@ -30,7 +30,7 @@ export default function Dashboard() {
     enabled: Boolean(username),
   });
 
-  const user = data?.data;
+  const user = userData?.data;
 
   const events = eventData?.data;
 
@@ -46,11 +46,9 @@ export default function Dashboard() {
     .sort((a, b) => (b.size ?? 0) - (a.size ?? 0))
     .slice(0, 6);
 
-  console.log(eventArray);
+  const isLoadingPageData = isLoadingUser || isLoadingRepos || isLoadingEvents;
 
-  const isBootstrapping = isLoadingUser || isLoadingRepos || isLoadingEvents;
-
-  if (isBootstrapping) {
+  if (isLoadingPageData) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
         <Spinner />
