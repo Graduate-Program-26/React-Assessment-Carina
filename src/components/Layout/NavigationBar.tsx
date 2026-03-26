@@ -14,12 +14,12 @@ import {
   useAuth,
   useClerk,
 } from "@clerk/clerk-react";
+import ThemeSwitch from "../ThemeSwitch";
 
 export function NavigationBar() {
   const { isSignedIn } = useAuth();
   const { user } = useUser();
   const { signOut } = useClerk();
-
   const displayName =
     user?.firstName ||
     user?.username ||
@@ -63,6 +63,7 @@ export function NavigationBar() {
             Log out
           </button>
         </SignedIn>
+        <ThemeSwitch />
       </div>
     </div>
   );
