@@ -6,6 +6,9 @@
 
 ## TODOs
 
+- Setup vercel
+- Use auth tokens to fetch data
 - Add fallback pages when auth fails
 - (Non-priority) Convert Clerk components to custom components
 - Convert followers and following above 1000 to show 1k (Searched user)
+- Limit lengths on descriptions where possible using line clamp

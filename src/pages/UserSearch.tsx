@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getUserByUsername } from "@/api/users";
 import SearchInput from "@/components/SearchInput";
-import { UserProfileCard } from "@/components/UserProfileCard";
+import { UserPreviewCard } from "@/components/UserPreviewCard";
 import { Spinner } from "@/components/Shadcn/spinner";
 
 function UserSearch() {
@@ -28,7 +28,7 @@ function UserSearch() {
       {error && <p>{(error as Error).message}</p>}
       {submitUsername && data === null && <p>No user found.</p>}
       {data && (
-        <UserProfileCard
+        <UserPreviewCard
           name={data.name ? data.name : data.login}
           bio={data.bio}
           avatar={data.avatar_url}
