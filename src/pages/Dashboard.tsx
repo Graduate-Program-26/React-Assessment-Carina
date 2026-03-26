@@ -1,4 +1,3 @@
-import { getAuthenticatedUser } from "@/api/users";
 import { RepoCard } from "@/components/Dashboard/RepoCard";
 import { Avatar } from "@/components/Shadcn/avatar";
 import { Separator } from "@/components/Shadcn/separator";
@@ -14,7 +13,6 @@ export default function Dashboard() {
 
   const fetchDataFromGithub = async () => {
     const token = await getToken();
-    // getAuthenticatedUser(token);
     console.log(token);
     return token;
   };
