@@ -14,12 +14,16 @@ import {
   useAuth,
   useClerk,
 } from "@clerk/clerk-react";
-import ThemeSwitch from "../ThemeSwitch";
+import { Button } from "@/components/Shadcn/button";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
 
 export function NavigationBar() {
   const { isSignedIn } = useAuth();
   const { user } = useUser();
   const { signOut } = useClerk();
+  const { theme, setTheme } = useTheme();
+
   const displayName =
     user?.firstName ||
     user?.username ||
@@ -32,16 +36,16 @@ export function NavigationBar() {
       return false;
     return true;
   });
+
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+
   return (
     <div className="flex h-16 items-center justify-between">
       <NavigationMenu>
         <NavigationMenuList className="gap-4">
           {visibleRoutes.map((route) => (
             <NavigationMenuItem key={route.id}>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                 <NavLink to={route.href}>{route.title}</NavLink>
               </NavigationMenuLink>
             </NavigationMenuItem>
@@ -52,7 +56,6 @@ export function NavigationBar() {
       <div className="flex items-center gap-3">
         <SignedIn>
           {displayName && <span className="text-sm">Hello {displayName}</span>}
-          {/* Clerk component */}
           <UserButton />
           <button
             className="text-sm underline"
@@ -63,7 +66,9 @@ export function NavigationBar() {
             Log out
           </button>
         </SignedIn>
-        <ThemeSwitch />
+        <Button variant="ghost" size="icon" aria-label="Toggle theme" onClick={toggleTheme}>
+          {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </Button>
       </div>
     </div>
   );
