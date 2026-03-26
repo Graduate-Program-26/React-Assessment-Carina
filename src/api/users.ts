@@ -1,10 +1,10 @@
 import { Octokit } from "octokit";
 import { RequestError } from "@octokit/request-error";
-const octokit = new Octokit({});
+const octokitNoAuth = new Octokit({});
 
 export const getUserByUsername = async (username: string) => {
   try {
-    const res = await octokit.rest.users.getByUsername({
+    const res = await octokitNoAuth.rest.users.getByUsername({
       username,
     });
     return res.data;
@@ -14,12 +14,13 @@ export const getUserByUsername = async (username: string) => {
   }
 };
 
-export const getAuthenticatedUser = async (token) => {
-  const octokit = new Octokit();
+const octokit = new Octokit({ auth: import.meta.env.VITE_GITHUB_ACCESS_TOKEN });
 
-  await octokit.request("GET /user", {
-    headers: {
-      Authorization: token,
-    },
+export const getAuthenticatedUser = await octokit.request("GET /user");
+
+export const getUserRepos = await octokit.request("GET /user/repos");
+
+export const getEvents = async (username: string) =>
+  await octokit.request("GET /users/{username}/events", {
+    username: username,
   });
-};

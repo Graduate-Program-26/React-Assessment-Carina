@@ -6,18 +6,39 @@ import {
   CardTitle,
 } from "@/components/Shadcn/card";
 
-export function RepoCard() {
+interface RepoCardProps {
+  title: string;
+  description?: string | null;
+  language?: string | null;
+  lastUpdated?: string | null;
+}
+
+export function RepoCard({
+  title,
+  description,
+  language,
+  lastUpdated,
+}: RepoCardProps) {
+  const formatDate = (isoDate?: string | null) => {
+    if (!isoDate) return "-";
+    const date = new Date(isoDate);
+    const formatted = isNaN(date.getTime()) ? "-" : date.toLocaleDateString();
+    return formatted;
+  };
   return (
-    <Card className="mx-auto w-full">
+    <Card className="mx-auto shrink lg:w-[45%]">
       <CardHeader>
-        <CardTitle>Repo Title</CardTitle>
-        <CardDescription className="line-clamp-2">Description</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription className="line-clamp-2">
+          {description ?? "No description"}
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-between">
-        <p>Language</p>
-        <p>Last updated:</p>
-        <span>*****</span>
+        <p>{language ?? "-"}</p>
+        <p>Last updated: {formatDate(lastUpdated)}</p>
       </CardContent>
     </Card>
+  );
+}
   );
 }
